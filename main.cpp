@@ -5,11 +5,11 @@
 class tridiagonal_matrix
 {
 public:
-    std::vector<double> m_down;    // Нижняя диагональ
-    std::vector<double> m_upper;   // Верхняя диагональ
-    std::vector<double> m_middle;  // Главная диагональ
+    std::vector<double> m_down;    // РќРёР¶РЅСЏСЏ РґРёР°РіРѕРЅР°Р»СЊ
+    std::vector<double> m_upper;   // Р’РµСЂС…РЅСЏСЏ РґРёР°РіРѕРЅР°Р»СЊ
+    std::vector<double> m_middle;  // Р“Р»Р°РІРЅР°СЏ РґРёР°РіРѕРЅР°Р»СЊ
 
-    // Конструктор класса
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
     tridiagonal_matrix(
         const std::vector<double>& down,
         const std::vector<double>& upper,
@@ -20,39 +20,39 @@ public:
     {
     };
 
-    // Деструктор класса
+    // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
     ~tridiagonal_matrix()
     {
         std::cout << "destructor called\n";
     }
 
-    // Метод для создания копии объекта
+    // РњРµС‚РѕРґ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РєРѕРїРёРё РѕР±СЉРµРєС‚Р°
     std::unique_ptr<tridiagonal_matrix> clone()
     {
-        // Создаем новый unique_ptr с копией текущего объекта
+        // РЎРѕР·РґР°РµРј РЅРѕРІС‹Р№ unique_ptr СЃ РєРѕРїРёРµР№ С‚РµРєСѓС‰РµРіРѕ РѕР±СЉРµРєС‚Р°
         return std::make_unique<tridiagonal_matrix>(
-            this->m_down,    // Копируем нижнюю диагональ
-            this->m_upper,   // Копируем верхнюю диагональ
-            this->m_middle  // Копируем главную диагональ
+            this->m_down,    // РљРѕРїРёСЂСѓРµРј РЅРёР¶РЅСЋСЋ РґРёР°РіРѕРЅР°Р»СЊ
+            this->m_upper,   // РљРѕРїРёСЂСѓРµРј РІРµСЂС…РЅСЋСЋ РґРёР°РіРѕРЅР°Р»СЊ
+            this->m_middle  // РљРѕРїРёСЂСѓРµРј РіР»Р°РІРЅСѓСЋ РґРёР°РіРѕРЅР°Р»СЊ
         );
     }
 };
 
 int main()
 {
-    // Исходные данные для матрицы
+    // РСЃС…РѕРґРЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ РјР°С‚СЂРёС†С‹
     auto down = std::vector<double>{ -4.0, 5.0 };
     auto upper = std::vector<double>{ 14.0, 8.0 };
     auto middle = std::vector<double>{ 3.0, 1.0, 7.0 };
 
-    // Создаем исходную матрицу
+    // РЎРѕР·РґР°РµРј РёСЃС…РѕРґРЅСѓСЋ РјР°С‚СЂРёС†Сѓ
     auto matrix = std::make_unique<tridiagonal_matrix>(
         down,
         upper,
         middle
     );
 
-    // Создаем копию матрицы
+    // РЎРѕР·РґР°РµРј РєРѕРїРёСЋ РјР°С‚СЂРёС†С‹
     auto matrix_clone = matrix->clone();
 
     return 0;
